@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE GRACES — Associação sem fins lucrativos · Estrutura e Missão</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   DESIGN SYSTEM — THE GRACES FINAL
+   Cores vivas · Sem fundo preto · Fundos suaves
+═══════════════════════════════════════════ */
+:root {
+  /* Base — tons quentes e claros */
+  --white:   #ffffff;
+  --bg:      #faf8f5;
+  --bg2:     #f5f2ed;
+  --ink:     #1a1a2e;
+  --body:    #2d2d3a;
+  --mid:     #5a5a6e;
+  --soft:    #7a7a8c;
+  --line:    #e8e4de;
+  --line2:   #f0ede8;
+
+  /* Gradientes suaves para fundos (nunca preto) */
+  --gradient-hero:    linear-gradient(165deg, #fefcf8 0%, #f8f4ee 35%, #f2ebe0 70%, #faf5ef 100%);
+  --gradient-impact:  linear-gradient(145deg, #2d3a5e 0%, #3d4a6e 40%, #4a5a80 100%);
+  --gradient-doc:     linear-gradient(135deg, #1d5fa0 0%, #2d6ab0 50%, #3d75c0 100%);
+  --gradient-review:  linear-gradient(135deg, #3d4a6e 0%, #4a5a80 50%, #5e6e96 100%);
+
+  /* Brand accents — vividos e bem visíveis */
+  --gold:    #b07d2a;
+  --gold-bg: #fff8eb;
+  --gold-bd: #e8c97a;
+
+  --rose:    #b03030;
+  --rose-bg: #fff2f2;
+  --rose-bd: #e8a0a0;
+
+  --sage:    #2d7a4a;
+  --sage-bg: #f0faf4;
+  --sage-bd: #80c8a0;
+
+  --steel:   #1d5fa0;
+  --steel-bg:#f0f5ff;
+  --steel-bd:#88b4e8;
+
+  --violet:  #5e3a9e;
+  --violet-bg:#f5f0ff;
+  --violet-bd:#b090e0;
+
+  --teal:    #1a8080;
+  --teal-bg: #f0fafa;
+  --teal-bd: #70c0c0;
+
+  --orange:  #c05a10;
+  --orange-bg:#fff5ee;
+  --orange-bd:#e8a060;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body {
+  background: var(--bg);
+  color: var(--body);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:#f5f2ed;}
+::-webkit-scrollbar-thumb{background:#c4b8a8; border-radius:3px;}
+::-webkit-scrollbar-thumb:hover{background:#b0a090;}
+
+/* ══════════════
+   HERO — Design incrível, fundo suave
+══════════════ */
+.hero {
+  background: var(--gradient-hero);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid var(--gold-bd);
+}
+
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(176,125,42,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(176,125,42,.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  opacity: .9;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 900px; height: 500px;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 50%, rgba(176,125,42,.18) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 30% 60%, rgba(45,122,74,.12) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 35% at 70% 40%, rgba(94,58,158,.08) 0%, transparent 45%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: glowPulse 8s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%,100% { opacity: .6; transform: translate(-50%,-50%) scale(1); }
+  50%      { opacity: 1;  transform: translate(-50%,-50%) scale(1.1); }
+}
+
+.hero-inner { position: relative; z-index: 2; max-width: 820px; }
+
+.hero-label {
+  display: inline-flex; align-items: center; gap: 1rem;
+  font-size: .75rem; font-weight: 600; letter-spacing: .3em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 2.5rem;
+  opacity: 0; animation: up .8s ease both .2s;
+}
+.hero-label::before, .hero-label::after {
+  content: ''; width: 32px; height: 1px; background: var(--gold-bd);
+}
+
+.hero-the {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-weight: 300; letter-spacing: .5em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: .5rem;
+  opacity: 0; animation: up .8s ease both .3s;
+}
+
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 12vw, 9rem);
+  font-weight: 900;
+  line-height: .9;
+  color: var(--ink);
+  letter-spacing: -.02em;
+  opacity: 0; animation: up .9s ease both .4s;
+}
+
+.hero-tagline {
+  margin-top: 2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 400;
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 600px;
+  margin-left: auto; margin-right: auto;
+  opacity: 0; animation: up .9s ease both .55s;
+}
+
+.hero-divider {
+  width: 60px; height: 2px;
+  background: var(--gold-bd);
+  margin: 2.5rem auto;
+  opacity: 0; animation: up .8s ease both .65s;
+}
+
+.hero-kpis {
+  display: flex; gap: clamp(2rem,6vw,5rem);
+  justify-content: center; flex-wrap: wrap;
+  opacity: 0; animation: up .9s ease both .75s;
+}
+.kpi-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem; font-weight: 700;
+  color: var(--gold); line-height: 1;
+}
+.kpi-l {
+  font-size: .7rem; font-weight: 600; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--soft);
+  margin-top: .3rem;
+}
+
+.hero-scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--soft);
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  animation: float 3s ease-in-out infinite;
+}
+.scroll-bar {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+@keyframes up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(-7px); }
+}
+
+/* ══════════════
+   EM POUCAS PALAVRAS — Missão clara
+══════════════ */
+.mission-strip {
+  background: linear-gradient(135deg, var(--sage-bg) 0%, var(--steel-bg) 50%, var(--gold-bg) 100%);
+  border-bottom: 2px solid var(--gold-bd);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.mission-inner { max-width: 820px; margin: 0 auto; }
+.mission-badge {
+  display: inline-block;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1rem;
+  padding: .35rem 1rem;
+  background: rgba(255,255,255,.7);
+  border: 1px solid var(--sage-bd);
+  border-radius: 999px;
+}
+.mission-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+.mission-title strong { color: var(--steel); }
+.mission-text {
+  font-size: clamp(.9rem, 1.8vw, 1rem);
+  color: var(--body);
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+.mission-loop {
+  font-size: .85rem;
+  color: var(--mid);
+  font-style: italic;
+  padding: .6rem 1rem;
+  background: rgba(255,255,255,.5);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  display: inline-block;
+  text-align: left;
+  max-width: 520px;
+}
+.mission-loop strong { color: var(--gold); }
+
+/* ══════════════
+   NAV
+══════════════ */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(255,252,248,.96);
+  border-bottom: 2px solid var(--gold-bd);
+  display: flex; overflow-x: auto;
+  box-shadow: 0 2px 16px rgba(176,125,42,.08);
+}
+
+.nb {
+  padding: 1rem 1.4rem;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: .72rem; font-weight: 700; letter-spacing: .15em;
+  text-transform: uppercase; color: var(--mid);
+  background: none; border: none; cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color .2s, border-color .2s;
+}
+.nb.active { color: var(--ink); border-bottom-color: var(--gold); }
+.nb:hover:not(.active) { color: var(--ink); }
+
+/* ══════════════
+   LAYOUT
+══════════════ */
+.section { display: none; }
+.section.active { display: block; }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 5rem 1.5rem; }
+
+.ey {
+  font-size: .7rem; font-weight: 700; letter-spacing: .28em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: .8rem; display: flex; align-items: center; gap: 1rem;
+}
+.ey::after { content: ''; width: 50px; height: 2px; background: var(--gold-bd); }
+
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem,4.5vw,3.5rem);
+  font-weight: 900; line-height: 1;
+  color: var(--ink); margin-bottom: 1rem;
+}
+.sec-title em { font-style: italic; color: var(--gold); }
+
+.sec-lead {
+  font-size: 1.05rem; font-weight: 300; color: var(--mid);
+  max-width: 620px; line-height: 1.75; margin-bottom: 3.5rem;
+}
+
+/* ══════════════
+   ORGANOGRAM
+══════════════ */
+.pyramid { display: flex; flex-direction: column; align-items: center; gap: 0; }
+
+.vline {
+  width: 2px; background: var(--line);
+}
+.vline.tall { height: 52px; }
+.vline.short { height: 32px; }
+
+.prow { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; width: 100%; }
+
+.pcard {
+  background: var(--white);
+  border: 2px solid var(--line);
+  padding: 1.3rem 1.6rem;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s;
+  position: relative;
+}
+.pcard::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 4px;
+}
+.pcard:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.12); }
+
+.pcard.t0 { width: 320px; text-align: center; border-color: var(--ink); border-width: 3px; }
+.pcard.t0::after { background: var(--gold); height: 5px; }
+
+.pcard.t1 { width: 230px; }
+.pcard.t1.rose::after { background: var(--rose); }
+.pcard.t1.rose:hover { border-color: var(--rose); }
+.pcard.t1.sage::after { background: var(--sage); }
+
+.pcard.t2 { width: 210px; }
+.pcard.t2.steel::after { background: var(--steel); }
+.pcard.t2.steel:hover { border-color: var(--steel); }
+
+.pcard.t3 { width: 160px; padding: 1rem 1.1rem; }
+.pcard.t4 { width: 360px; text-align: center; padding: 1.2rem; border-style: dashed; }
+
+.pc-lyr {
+  font-size: .6rem; font-weight: 700; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--soft); margin-bottom: .3rem;
+}
+.pc-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; font-weight: 700; color: var(--ink);
+  line-height: 1.2; margin-bottom: .25rem;
+}
+.pcard.t3 .pc-name { font-size: .95rem; }
+.pc-sub { font-size: .72rem; color: var(--mid); line-height: 1.4; }
+
+.pc-tag {
+  display: inline-block; margin-top: .6rem;
+  font-size: .58rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; padding: .24rem .75rem; border-radius: 2px;
+}
+.tag-gold   { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-bd); }
+.tag-rose   { background: var(--rose-bg); color: var(--rose); border: 1px solid var(--rose-bd); }
+.tag-sage   { background: var(--sage-bg); color: var(--sage); border: 1px solid var(--sage-bd); }
+.tag-steel  { background: var(--steel-bg); color: var(--steel); border: 1px solid var(--steel-bd); }
+.tag-violet { background: var(--violet-bg); color: var(--violet); border: 1px solid var(--violet-bd); }
+.tag-teal   { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-bd); }
+.tag-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-bd); }
+.tag-ink    { background: linear-gradient(135deg, #2d3a5e, #3d4a6e); color: var(--white); border: 1px solid rgba(255,255,255,.2); }
+
+/* hline for multi-node rows */
+.hrow { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; width: 100%; }
+.hbranch { display: flex; flex-direction: column; align-items: center; }
+.hbranch .vline { height: 30px; }
+
+/* ══════════════
+   CARGO CARDS
+══════════════ */
+.cargo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 1.5rem;
+}
+
+.cc {
+  background: var(--white);
+  border: 2px solid var(--line);
+  padding: 1.8rem 2rem;
+  position: relative;
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+.cc:hover { box-shadow: 0 10px 28px rgba(0,0,0,.1); transform: translateY(-3px); }
+.cc .cc-bar { position: absolute; top: 0; left: 0; right: 0; height: 5px; }
+
+.cc-num { font-size: .62rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--soft); margin-bottom: .5rem; }
+.cc-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: .2rem; line-height: 1.2; }
+.cc-sub { font-size: .8rem; font-style: italic; color: var(--mid); margin-bottom: 1.2rem; }
+.cc-stitle { font-size: .65rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--soft); margin-top: 1rem; margin-bottom: .5rem; border-top: 1px solid var(--line2); padding-top: .8rem; }
+.cc ul { list-style: none; }
+.cc li {
+  font-size: .82rem; color: var(--body);
+  padding: .3rem 0 .3rem 1.2rem; position: relative; line-height: 1.5;
+  border-bottom: 1px solid var(--line2);
+}
+.cc li:last-child { border-bottom: none; }
+.cc li::before { content: '▸'; position: absolute; left: 0; font-size: .6rem; top: .45rem; }
+
+.auth-row { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--line2); display: flex; justify-content: space-between; align-items: center; }
+.auth-label { font-size: .62rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--soft); }
+.auth-dots { display: flex; gap: 4px; }
+.dot { width: 10px; height: 10px; border-radius: 2px; background: var(--line); }
+
+/* ══════════════
+   DEPT CARDS
+══════════════ */
+.dept-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.dc {
+  background: var(--white);
+  border: 2px solid var(--line);
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+.dc:hover { box-shadow: 0 12px 36px rgba(0,0,0,.1); transform: translateY(-3px); }
+
+.dc-top { padding: 1.6rem; border-bottom: 1px solid var(--line2); position: relative; }
+.dc-top::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; }
+
+.dc-icon { font-size: 2rem; margin-bottom: .9rem; display: block; }
+.dc-name { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--ink); margin-bottom: .3rem; line-height: 1.2; }
+.dc-tag { margin-top: .6rem; }
+.dc-tagline { font-size: .8rem; color: var(--mid); line-height: 1.5; margin-top: .4rem; }
+
+.dc-body { padding: 1.4rem 1.6rem 1.6rem; }
+
+.dc-label { font-size: .62rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--soft); margin-bottom: .5rem; margin-top: 1rem; }
+.dc-label:first-child { margin-top: 0; }
+
+.dc ul { list-style: none; }
+.dc li {
+  font-size: .78rem; color: var(--body); padding: .25rem 0 .25rem .9rem;
+  position: relative; line-height: 1.4; border-bottom: 1px solid var(--line2);
+}
+.dc li:last-child { border-bottom: none; }
+.dc li::before { content: '▸'; position: absolute; left: 0; font-size: .55rem; top: .38rem; }
+
+/* Sub-areas block */
+.sub-areas {
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  border: 1.5px solid var(--line);
+  background: var(--bg);
+}
+.sub-title { font-size: .62rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; margin-bottom: .5rem; }
+.sub-list { display: flex; flex-wrap: wrap; gap: .4rem; }
+.sub-chip {
+  font-size: .68rem; font-weight: 600;
+  padding: .25rem .75rem;
+  border-radius: 2px;
+  cursor: default;
+}
+
+/* Startup box */
+.startup-box { margin-top: 1rem; padding: 1rem 1.2rem; border-left: 4px solid; }
+.startup-lbl { font-size: .62rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; margin-bottom: .35rem; }
+.startup-txt { font-size: .78rem; line-height: 1.5; }
+
+.fund-tag {
+  display: inline-block; margin-top: .8rem;
+  font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  padding: .28rem .9rem; border-radius: 2px;
+}
+
+/* future */
+.dc.future { border-style: dashed; border-color: #cccccc; }
+.dc.future .dc-top { background: var(--bg); }
+.future-lbl {
+  display: inline-block;
+  font-size: .62rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  padding: .22rem .8rem; background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-bd);
+  border-radius: 2px; margin-bottom: .8rem;
+}
+
+/* ══════════════
+   GROWTH PLAN
+══════════════ */
+.growth-section { background: linear-gradient(180deg, var(--bg) 0%, #f8f5f0 100%); }
+
+.phase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  position: relative;
+}
+
+.phase-card {
+  background: var(--white);
+  border: 2px solid var(--line);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.ph-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem; font-weight: 900; line-height: 1;
+  color: var(--line); position: absolute; top: 1rem; right: 1.5rem;
+}
+
+.ph-tag { font-size: .62rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: .4rem; }
+.ph-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--ink); margin-bottom: .3rem; }
+.ph-period { font-size: .78rem; font-weight: 600; margin-bottom: .8rem; }
+.ph-people { font-size: 1.5rem; font-weight: 700; color: var(--ink); }
+.ph-people-lbl { font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); margin-bottom: 1rem; }
+
+.ph-items { list-style: none; }
+.ph-items li {
+  font-size: .78rem; color: var(--body); padding: .3rem 0 .3rem 1rem;
+  position: relative; line-height: 1.4; border-bottom: 1px solid var(--line2);
+}
+.ph-items li:last-child { border-bottom: none; }
+.ph-items li::before { content: '→'; position: absolute; left: 0; font-size: .65rem; top: .38rem; }
+
+.ph-dps { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line2); }
+.ph-dps-lbl { font-size: .6rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--soft); margin-bottom: .5rem; }
+.ph-dps-list { display: flex; flex-wrap: wrap; gap: .3rem; }
+.dp-chip { font-size: .65rem; font-weight: 600; padding: .22rem .6rem; border-radius: 2px; }
+
+/* ══════════════
+   AUTONOMIA
+══════════════ */
+.auto-section { background: linear-gradient(180deg, var(--white) 0%, #fefcf9 100%); }
+
+.auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.2rem;
+}
+
+.auto-card {
+  background: var(--white);
+  border: 2px solid var(--line);
+  padding: 1.5rem;
+  position: relative;
+}
+.auto-card .ac-bar { position: absolute; top: 0; left: 0; right: 0; height: 5px; }
+.ac-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; line-height: 1; color: var(--line2); position: absolute; bottom: .8rem; right: 1rem; }
+.ac-lbl { font-size: .6rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; margin-bottom: .4rem; }
+.ac-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: .3rem; }
+.ac-range { font-size: .82rem; font-weight: 600; margin-bottom: .7rem; }
+.ac-who { font-size: .78rem; color: var(--body); line-height: 1.5; }
+.ac-eg { margin-top: .6rem; font-size: .7rem; color: var(--soft); font-style: italic; line-height: 1.4; }
+
+/* ══════════════
+   MOTOR STARTUPS
+══════════════ */
+.engine-section { background: linear-gradient(180deg, #f5f2ed 0%, var(--bg) 100%); }
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  border: 2px solid var(--ink);
+}
+.flow-step {
+  padding: 1.8rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transition: background .2s;
+}
+.flow-step:hover { background: var(--gold-bg); }
+
+.fs-n { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--line); line-height: 1; margin-bottom: .6rem; }
+.fs-t { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: .4rem; }
+.fs-d { font-size: .78rem; color: var(--mid); line-height: 1.6; }
+
+.rev-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+@media(max-width:580px){ .rev-grid { grid-template-columns: 1fr; } }
+
+.rev-card { background: var(--white); border: 2px solid var(--line); padding: 1.8rem; }
+.rev-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; }
+.rev-ul { list-style: none; }
+.rev-ul li {
+  font-size: .78rem; color: var(--body); padding: .32rem 0 .32rem 1.2rem;
+  border-bottom: 1px solid var(--line2); position: relative; line-height: 1.4;
+}
+.rev-ul li:last-child { border-bottom: none; }
+.rev-ul li::before { content: '◆'; position: absolute; left: 0; font-size: .45rem; top: .55rem; }
+
+/* ══════════════
+   IMPACTO — fundo rico (nunca preto)
+══════════════ */
+.impact-section { background: var(--gradient-impact); }
+.impact-section .ey { color: var(--gold-bd); }
+.impact-section .ey::after { background: rgba(255,255,255,.25); }
+.impact-section .sec-title { color: var(--white); }
+.impact-section .sec-title em { color: var(--gold-bd); }
+.impact-section .sec-lead { color: rgba(255,255,255,.75); max-width: 680px; }
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.ic {
+  border: 1.5px solid rgba(255,255,255,.2);
+  padding: 2rem;
+  transition: border-color .25s, transform .25s;
+  background: rgba(255,255,255,.04);
+  border-radius: 12px;
+}
+.ic:hover { border-color: rgba(255,255,255,.4); transform: translateY(-2px); background: rgba(255,255,255,.08); }
+.ic-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+.ic-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: .6rem; }
+.ic-text { font-size: .82rem; color: rgba(255,255,255,.75); line-height: 1.7; }
+
+.num-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255,255,255,.15);
+  padding-top: 3rem;
+}
+.ns-item { border-left: 3px solid; padding-left: 1rem; }
+.ns-num { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; line-height: 1; }
+.ns-lbl { font-size: .65rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-top: .3rem; }
+
+/* ══════════════
+   ESTATUTO
+══════════════ */
+.estatuto-section { background: linear-gradient(180deg, var(--bg) 0%, #f8f6f2 100%); }
+
+.doc {
+  max-width: 720px; margin: 0 auto;
+  background: var(--white); border: 2px solid var(--line);
+}
+.doc-head {
+  padding: 3rem; border-bottom: 2px solid rgba(255,255,255,.2); text-align: center;
+  background: var(--gradient-doc); color: var(--white);
+}
+.doc-the { font-size: .85rem; font-weight: 300; letter-spacing: .5em; text-transform: uppercase; color: var(--gold-bd); margin-bottom: .3rem; }
+.doc-graces { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; letter-spacing: .05em; }
+.doc-sub { font-size: .7rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(255,255,255,.6); margin-top: .6rem; }
+
+.doc-body { padding: 3rem; }
+.art { margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--line2); }
+.art:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.art h4 { font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: .8rem; padding-bottom: .5rem; border-bottom: 2px solid var(--gold-bg); }
+.art p, .art li { font-size: .85rem; color: var(--body); line-height: 1.85; }
+.art ol { padding-left: 1.5rem; margin-top: .4rem; }
+.art ol li { margin-bottom: .35rem; }
+.art strong { color: var(--ink); }
+
+/* ══════════════
+   MODAL
+══════════════ */
+.modal-bg {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(45,58,94,.35); backdrop-filter: blur(10px);
+  place-items: center; padding: 1rem;
+}
+.modal-bg.open { display: grid; }
+
+.modal-box {
+  background: var(--white); border: 2px solid var(--steel-bd);
+  width: 100%; max-width: 600px; max-height: 88vh; overflow-y: auto;
+  position: relative; animation: mIn .35s cubic-bezier(.22,1,.36,1);
+  box-shadow: 0 24px 64px rgba(29,95,160,.2);
+}
+@keyframes mIn {
+  from { opacity: 0; transform: translateY(24px) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+.modal-stripe { height: 6px; width: 100%; }
+.modal-close {
+  position: absolute; top: 1.2rem; right: 1.2rem;
+  background: none; border: 2px solid var(--line); width: 36px; height: 36px;
+  border-radius: 50%; font-size: 1rem; color: var(--mid); cursor: pointer;
+  transition: all .2s; display: flex; align-items: center; justify-content: center;
+}
+.modal-close:hover { background: var(--steel); color: var(--white); border-color: var(--steel); }
+
+.modal-inner { padding: 2.5rem; }
+.m-layer { font-size: .62rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--soft); margin-bottom: .4rem; }
+.m-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--ink); margin-bottom: 2rem; line-height: 1.1; }
+.m-sec { margin-bottom: 1.5rem; }
+.m-sec-t { font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; padding-bottom: .4rem; border-bottom: 2px solid var(--gold-bg); }
+.m-ul { list-style: none; }
+.m-ul li { font-size: .82rem; color: var(--body); padding: .3rem 0 .3rem 1.1rem; position: relative; line-height: 1.5; border-bottom: 1px solid var(--line2); }
+.m-ul li:last-child { border-bottom: none; }
+.m-ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: .65rem; top: .38rem; }
+
+/* ══════════════
+   REVEAL
+══════════════ */
+.rv {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s cubic-bezier(.22,1,.36,1);
+}
+.rv.vis { opacity: 1; transform: none; }
+.rv.d1 { transition-delay: .08s; }
+.rv.d2 { transition-delay: .16s; }
+.rv.d3 { transition-delay: .24s; }
+.rv.d4 { transition-delay: .32s; }
+
+/* ══════════════
+   RESPONSIVE
+══════════════ */
+@media(max-width:768px){
+  .wrap { padding: 3.5rem 1rem; }
+  .doc-body, .doc-head { padding: 2rem 1.2rem; }
+  .pcard.t0 { width: 100%; }
+  .pcard.t1, .pcard.t2 { width: min(230px,100%); }
+  .flow-grid { grid-template-columns: 1fr 1fr; }
+  .hero-kpis { gap: 2rem; }
+}
+@media(max-width:480px){
+  .flow-grid { grid-template-columns: 1fr; }
+  .nav { padding: 0; }
+  .nb { padding: .8rem 1rem; font-size: .62rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-label">Associação sem fins lucrativos</div>
+    <div class="hero-the">The</div>
+    <h1 class="hero-name">Graces</h1>
+    <p class="hero-tagline">Nascemos para <strong>apoiar o próximo</strong>. Somos uma associação sem fins lucrativos que investe em startups e projetos para ganhar visibilidade e gerar receitas — e assim sustentar a causa e investir em iniciativas que fazem a diferença na sociedade e em quem mais precisa. Tudo gira em torno disso.</p>
+    <div class="hero-divider"></div>
+    <div class="hero-kpis">
+      <div><div class="kpi-n">18+</div><div class="kpi-l">Pessoas Fase 1</div></div>
+      <div><div class="kpi-n">6</div><div class="kpi-l">DPs Activos</div></div>
+      <div><div class="kpi-n">4</div><div class="kpi-l">Fases de Crescimento</div></div>
+      <div><div class="kpi-n">12+</div><div class="kpi-l">DPs no Horizonte</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint"><div class="scroll-bar"></div>Explorar</div>
+</section>
+
+<!-- Em poucas palavras -->
+<section class="mission-strip" aria-label="O que somos">
+  <div class="mission-inner">
+    <div class="mission-badge">O que somos</div>
+    <h2 class="mission-title">Associação <strong>sem fins lucrativos</strong> com um objetivo claro: <strong>apoiar o próximo</strong>.</h2>
+    <p class="mission-text">Investimos em startups e projetos para ganhar visibilidade e criar formas de receita. Essa receita serve para sustentar a associação e, acima de tudo, para investir de forma criativa em projetos benéficos para a sociedade e para quem mais precisa.</p>
+    <p class="mission-loop"><strong>Tudo o que fazemos</strong> — estrutura, departamentos, motor de startups — existe para tornar isto possível: mais impacto, mais apoio, mais capacidade de ajudar.</p>
+  </div>
+</section>
+
+<!-- ══════ NAV ══════ -->
+<nav class="nav" id="nav">
+  <button class="nb active" onclick="go('org',this)">Organograma</button>
+  <button class="nb" onclick="go('cargos',this)">Cargos</button>
+  <button class="nb" onclick="go('depts',this)">Departamentos</button>
+  <button class="nb" onclick="go('growth',this)">Crescimento</button>
+  <button class="nb" onclick="go('auto',this)">Autonomia</button>
+  <button class="nb" onclick="go('engine',this)">Motor Startups</button>
+  <button class="nb" onclick="go('impact',this)">Impacto</button>
+  <button class="nb" onclick="go('estatuto',this)">Estatuto</button>
+</nav>
+
+<!-- ══════════════════════════
+   01 — ORGANOGRAMA
+══════════════════════════ -->
+<section class="section active" id="org">
+<div class="wrap">
+  <div class="ey rv">01 — Hierarquia</div>
+  <h2 class="sec-title rv d1">Organograma <em>de Poder</em></h2>
+  <p class="sec-lead rv d2">Hierarquia de 5 camadas. A <strong>Coordenadora Geral</strong> está num nível mais acima e não atende assuntos de baixo nível entre DPs. Os <strong>Líderes de DP reportam ao Diretor-Geral de Estratégia e Inovação</strong>, que coordena as startups internas da associação com os departamentos. Clica em qualquer elemento para ver detalhes.</p>
+
+  <div class="pyramid">
+
+    <div class="prow rv d3">
+      <div class="pcard t0" onclick="openM('ag')">
+        <div class="pc-lyr">Camada 0 · Soberania</div>
+        <div class="pc-name">Assembleia Geral</div>
+        <div class="pc-sub">Todos os Líderes de Departamento. Voto igual, poder máximo.</div>
+        <span class="pc-tag tag-gold">Órgão Soberano</span>
+      </div>
+    </div>
+
+    <div class="vline tall"></div>
+
+    <div class="hrow rv d1">
+      <div class="hbranch">
+        <div class="vline" style="height:30px;"></div>
+        <div class="pcard t1 rose" onclick="openM('dge')">
+          <div class="pc-lyr">Camada 1 · Estratégia</div>
+          <div class="pc-name">Diretor-Geral de Estratégia e Inovação</div>
+          <div class="pc-sub">Os Líderes de DP reportam a ele. Coordena startups internas da associação com os departamentos. Não executivo.</div>
+          <span class="pc-tag tag-violet">Estratégico</span>
+        </div>
+      </div>
+      <div class="hbranch">
+        <div class="vline" style="height:30px;"></div>
+        <div class="pcard t1 sage" onclick="openM('cf')">
+          <div class="pc-lyr">Fiscalização · Independente</div>
+          <div class="pc-name">Conselho Fiscal</div>
+          <div class="pc-sub">3 membros independentes. Auditoria financeira total.</div>
+          <span class="pc-tag tag-sage">Independente</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="vline tall"></div>
+
+    <div class="hrow rv d2">
+      <div class="hbranch">
+        <div class="vline" style="height:30px;"></div>
+        <div class="pcard t2 steel" onclick="openM('cg')">
+          <div class="pc-lyr">Camada 2A · Comando</div>
+          <div class="pc-name">Coordenador/a Geral</div>
+          <div class="pc-sub">Nível mais acima. Não atende assuntos de baixo nível entre DPs — isso é o DGE. CEO executivo/a.</div>
+          <span class="pc-tag tag-steel">CEO</span>
+        </div>
+      </div>
+      <div class="hbranch">
+        <div class="vline" style="height:30px;"></div>
+        <div class="pcard t2 steel" onclick="openM('dir')">
+          <div class="pc-lyr">Camada 2B · Suporte</div>
+          <div class="pc-name">Direção Executiva</div>
+          <div class="pc-sub">Vice · Secretário/a · Tesoureiro/a</div>
+          <span class="pc-tag tag-steel">Executiva</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="vline tall"></div>
+
+    <div class="hrow rv d3" style="gap:.6rem;">
+      <div class="hbranch"><div class="vline" style="height:28px;"></div>
+        <div class="pcard t3" style="border-top:4px solid var(--rose);" onclick="openM('dp-mk')">
+          <div class="pc-lyr">DP-01</div><div class="pc-name">Marketing & Parcerias</div><span class="pc-tag tag-rose">Activo</span>
+        </div>
+      </div>
+      <div class="hbranch"><div class="vline" style="height:28px;"></div>
+        <div class="pcard t3" style="border-top:4px solid var(--sage);" onclick="openM('dp-gp')">
+          <div class="pc-lyr">DP-02</div><div class="pc-name">Gestão de Projetos</div><span class="pc-tag tag-sage">Activo</span>
+        </div>
+      </div>
+      <div class="hbranch"><div class="vline" style="height:28px;"></div>
+        <div class="pcard t3" style="border-top:4px solid var(--violet);" onclick="openM('dp-ci')">
+          <div class="pc-lyr">DP-03</div><div class="pc-name">Comunicação & Imagem</div><span class="pc-tag tag-violet">Activo</span>
+        </div>
+      </div>
+      <div class="hbranch"><div class="vline" style="height:28px;"></div>
+        <div class="pcard t3" style="border-top:4px solid var(--teal);" onclick="openM('dp-af')">
+          <div class="pc-lyr">DP-04</div><div class="pc-name">Adm. & Finanças</div><span class="pc-tag tag-teal">Activo</span>
+        </div>
+      </div>
+      <div class="hbranch"><div class="vline" style="height:28px;"></div>
+        <div class="pcard t3" style="border-top:4px solid var(--gold);" onclick="openM('dp-inn')">
+          <div class="pc-lyr">DP-05</div><div class="pc-name">Inovação & Startups</div><span class="pc-tag tag-gold">Activo ★</span>
+        </div>
+      </div>
+      <div class="hbranch"><div class="vline" style="height:28px;"></div>
+        <div class="pcard t3" style="border-top:4px solid var(--steel);" onclick="openM('dp-com')">
+          <div class="pc-lyr">DP-06</div><div class="pc-name">Comunidade & Impacto</div><span class="pc-tag tag-steel">Activo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="vline" style="height:30px;"></div>
+
+    <div class="prow rv d4">
+      <div class="pcard t4">
+        <div class="pc-lyr">Camada 4 · Operacional</div>
+        <div class="pc-name">Colaboradores, Sub-Equipas & Startups Internas</div>
+        <div class="pc-sub">Os Líderes de DP reportam ao DGE. Cada DP cresce com sub-áreas e equipas. As startups internas da associação são coordenadas pelo DGE com os departamentos — o DP Gestão de Projetos não se envolve nesta coordenação.</div>
+        <span class="pc-tag tag-gold">Expansão Infinita</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════
+   02 — CARGOS
+══════════════════════════ -->
+<section class="section" id="cargos" style="background:var(--bg);">
+<div class="wrap">
+  <div class="ey rv">02 — Cargos</div>
+  <h2 class="sec-title rv d1">Poder <em>Bem Definido</em></h2>
+  <p class="sec-lead rv d2">Seis cargos com funções claras, autoridade definida e limites precisos. Sem zonas cinzentas. Sem conflitos de poder.</p>
+
+  <div class="cargo-grid">
+
+    <!-- 01 COORD GERAL -->
+    <div class="cc rv">
+      <div class="cc-bar" style="background:linear-gradient(90deg,var(--gold),var(--steel));"></div>
+      <div class="cc-num">// 01 · Autoridade Executiva Máxima</div>
+      <div class="cc-name">Coordenador/a Geral</div>
+      <div class="cc-sub">"O/A CEO da The Graces"</div>
+      <div style="display:inline-block;margin-bottom:1rem;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .9rem;background:var(--gold-bg);color:var(--gold);border:1.5px solid var(--gold-bd);">Poder Executivo Final</div>
+      <div class="cc-stitle">Funções</div>
+      <ul>
+        <li>Representação legal da organização</li>
+        <li>Aprovação final de orçamento e alocação de fundos</li>
+        <li>Aprovação de startups internas</li>
+        <li>Nomeação e avaliação de Líderes de DP</li>
+        <li>Assinatura de contratos estratégicos</li>
+        <li>Pode suspender decisões que prejudiquem a organização</li>
+      </ul>
+      <div style="margin-top:.8rem;padding:.8rem 1rem;background:var(--gold-bg);border-left:4px solid var(--gold);font-size:.75rem;color:var(--body);line-height:1.5;">
+        A Coordenadora Geral está num nível mais acima: <strong>não atende assuntos de baixo nível entre DPs</strong>. A coordenação do dia-a-dia e das startups internas com os departamentos é do Diretor-Geral de Estratégia e Inovação.
+      </div>
+      <div class="cc-stitle">Revisão e Mandato</div>
+      <ul>
+        <li>Revisão de desempenho: a cada 6 meses</li>
+        <li>Mandato mínimo recomendado: 12 meses</li>
+      </ul>
+      <div class="auth-row">
+        <span class="auth-label">Autoridade</span>
+        <div class="auth-dots">
+          <div class="dot" style="background:var(--gold)"></div><div class="dot" style="background:var(--gold)"></div>
+          <div class="dot" style="background:var(--gold)"></div><div class="dot" style="background:var(--gold)"></div>
+          <div class="dot" style="background:var(--gold)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 DIRETOR ESTRATÉGIA -->
+    <div class="cc rv d1">
+      <div class="cc-bar" style="background:var(--violet);"></div>
+      <div class="cc-num">// 02 · Arquitecto de Crescimento</div>
+      <div class="cc-name">Diretor-Geral de Estratégia e Inovação</div>
+      <div class="cc-sub">Os Líderes de DP reportam a ele. Coordena as startups internas da associação com os departamentos.</div>
+      <div style="display:inline-block;margin-bottom:1rem;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .9rem;background:var(--violet-bg);color:var(--violet);border:1.5px solid var(--violet-bd);">Poder Estratégico · Não Executivo</div>
+      <div class="cc-stitle">Funções</div>
+      <ul>
+        <li>Os Líderes de DP reportam ao DGE (não à Coord. Geral para assuntos operacionais)</li>
+        <li>Coordena as startups internas da associação com os DPs e com a Direção</li>
+        <li>Propor plano estratégico semestral</li>
+        <li>Definir metas de inovação para a organização</li>
+        <li>Avaliar impacto e escalabilidade dos projectos</li>
+        <li>Propor criação, fusão ou melhoria de DPs</li>
+        <li>Desenvolver o modelo de startups internas</li>
+      </ul>
+      <div class="cc-stitle">Limites do DGE</div>
+      <ul>
+        <li>Não tem poder executivo directo: não aprova despesas nem contratos</li>
+        <li>Não substitui a Coordenadora Geral; as propostas precisam de aprovação dela</li>
+        <li>Não decide orçamentos nem nomeações — recomenda à Coord. Geral</li>
+        <li>É o conselheiro estratégico e o coordenador operacional dos DPs perante a Coord. Geral</li>
+      </ul>
+      <div style="margin-top:.8rem;padding:.8rem 1rem;background:var(--violet-bg);border-left:4px solid var(--violet);font-size:.75rem;color:var(--violet);font-weight:500;line-height:1.5;">
+        ⚠️ Propõe e recomenda. A decisão final é sempre da Coordenação Geral.
+      </div>
+      <div class="auth-row">
+        <span class="auth-label">Poder</span>
+        <div class="auth-dots">
+          <div class="dot" style="background:var(--violet)"></div><div class="dot" style="background:var(--violet)"></div>
+          <div class="dot" style="background:var(--violet)"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 VICE -->
+    <div class="cc rv d2">
+      <div class="cc-bar" style="background:var(--steel);"></div>
+      <div class="cc-num">// 03 · Supervisão e Execução</div>
+      <div class="cc-name">Vice-Coordenador/a</div>
+      <div class="cc-sub">"O/A Segundo a Bordo"</div>
+      <div style="display:inline-block;margin-bottom:1rem;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .9rem;background:var(--steel-bg);color:var(--steel);border:1.5px solid var(--steel-bd);">Poder Delegado</div>
+      <div class="cc-stitle">Funções</div>
+      <ul>
+        <li>Acompanhar a execução dos DPs no dia-a-dia</li>
+        <li>Monitorar metas e OKRs de toda a organização</li>
+        <li>Coordenar projectos interdepartamentais</li>
+        <li>Substituir a Coordenação Geral quando necessário</li>
+      </ul>
+      <div class="auth-row">
+        <span class="auth-label">Autoridade</span>
+        <div class="auth-dots">
+          <div class="dot" style="background:var(--steel)"></div><div class="dot" style="background:var(--steel)"></div>
+          <div class="dot" style="background:var(--steel)"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 SECRETÁRIO -->
+    <div class="cc rv">
+      <div class="cc-bar" style="background:var(--sage);"></div>
+      <div class="cc-num">// 04 · Governança e Conformidade</div>
+      <div class="cc-name">Secretário/a Geral</div>
+      <div class="cc-sub">"O/A Guardião/ã da Conformidade"</div>
+      <div class="cc-stitle">Funções</div>
+      <ul>
+        <li>Registar decisões oficiais e atas de reuniões</li>
+        <li>Garantir cumprimento do estatuto e regulamentos</li>
+        <li>Organizar reuniões formais e convocatórias</li>
+        <li>Controlar prazos institucionais e mandatos</li>
+      </ul>
+      <div class="auth-row">
+        <span class="auth-label">Autoridade</span>
+        <div class="auth-dots">
+          <div class="dot" style="background:var(--sage)"></div><div class="dot" style="background:var(--sage)"></div>
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 TESOUREIRO -->
+    <div class="cc rv d1">
+      <div class="cc-bar" style="background:var(--gold);"></div>
+      <div class="cc-num">// 05 · Autoridade Financeira Institucional</div>
+      <div class="cc-name">Tesoureiro/a</div>
+      <div class="cc-sub">"O/A Fiscal Financeiro/a da Organização"</div>
+      <div style="display:inline-block;margin-bottom:1rem;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .9rem;background:var(--gold-bg);color:var(--gold);border:1.5px solid var(--gold-bd);">Controlo e Validação Financeira</div>
+      <div class="cc-stitle">Funções</div>
+      <ul>
+        <li>Controlar contas bancárias institucionais</li>
+        <li>Validar despesas acima do limite dos DPs</li>
+        <li>Produzir relatório financeiro semestral</li>
+        <li>Co-assinar contratos financeiros relevantes</li>
+        <li>Garantir transparência e prestação de contas</li>
+      </ul>
+      <div style="margin-top:.8rem;padding:.8rem 1rem;background:var(--gold-bg);border-left:4px solid var(--gold);font-size:.75rem;color:var(--gold);font-weight:500;line-height:1.5;">
+        ⚠️ Fiscal financeiro institucional. Não executa tarefas administrativas diárias — esse papel é do DP de Adm. & Finanças.
+      </div>
+      <div class="auth-row">
+        <span class="auth-label">Autoridade Financeira</span>
+        <div class="auth-dots">
+          <div class="dot" style="background:var(--gold)"></div><div class="dot" style="background:var(--gold)"></div>
+          <div class="dot" style="background:var(--gold)"></div><div class="dot" style="background:var(--gold)"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 LÍDER DP -->
+    <div class="cc rv d2">
+      <div class="cc-bar" style="background:var(--teal);"></div>
+      <div class="cc-num">// 06 · Autonomia Operacional</div>
+      <div class="cc-name">Líder de Departamento</div>
+      <div class="cc-sub">"CEO do Seu Universo"</div>
+      <div class="cc-stitle">Funções e Poderes</div>
+      <ul>
+        <li>Gestão total da equipa e projectos do DP</li>
+        <li>Criar e liderar startups internas do DP</li>
+        <li>Autonomia de despesa até ao limite aprovado</li>
+        <li>Entrega de relatório mensal</li>
+        <li>Avaliação de desempenho a cada 6 meses</li>
+        <li>Participa e vota na Assembleia Geral</li>
+      </ul>
+      <div style="margin-top:.8rem;padding:.8rem 1rem;background:var(--teal-bg);border-left:4px solid var(--teal);font-size:.75rem;color:var(--teal);font-weight:500;line-height:1.5;">
+        ⚠️ Projectos de alto impacto exigem aprovação da Coordenação Geral.
+      </div>
+      <div class="auth-row">
+        <span class="auth-label">Autonomia no DP</span>
+        <div class="auth-dots">
+          <div class="dot" style="background:var(--teal)"></div><div class="dot" style="background:var(--teal)"></div>
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CLARIFICAÇÃO TESOUREIRO vs DP ADM -->
+  <div style="margin-top:3.5rem;" class="rv">
+    <div style="font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;">🔷 Distinção Crítica <span style="flex:1;height:2px;background:var(--line);display:inline-block;max-width:80px;"></span></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+      <div style="background:var(--white);border:2px solid var(--gold-bd);padding:1.8rem;">
+        <div style="font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;">🏛️ Tesoureiro/a</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem;">Cargo Institucional</div>
+        <div style="font-size:.78rem;color:var(--mid);margin-bottom:.8rem;line-height:1.5;">Fiscaliza · Valida · Controla · Garante legalidade financeira · Atua como guardião dos recursos</div>
+        <div style="font-size:.75rem;font-weight:600;color:var(--body);border-top:1px solid var(--line2);padding-top:.8rem;">Não executa tarefas administrativas diárias.</div>
+      </div>
+      <div style="background:var(--white);border:2px solid var(--teal-bd);padding:1.8rem;">
+        <div style="font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem;">🏢 DP Adm. & Finanças</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem;">Departamento Operacional</div>
+        <div style="font-size:.78rem;color:var(--mid);margin-bottom:.8rem;line-height:1.5;">Emite facturas · Organiza pagamentos · Faz orçamentos · Controla fluxo de caixa diário · Gere documentação</div>
+        <div style="font-size:.75rem;font-weight:600;color:var(--body);border-top:1px solid var(--line2);padding-top:.8rem;">Eles executam. O/A Tesoureiro/a supervisiona.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODELO DE REVISÃO ESTRUTURAL -->
+  <div style="margin-top:2rem;padding:2rem;background:var(--gradient-review);color:var(--white);border-radius:16px;box-shadow:0 12px 40px rgba(45,58,94,.25);" class="rv">
+    <div style="font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-bd);margin-bottom:1.2rem;">🔷 Modelo de Revisão Estrutural</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem;">
+      <div>
+        <div style="font-size:1.8rem;font-weight:700;font-family:'Playfair Display',serif;color:var(--gold-bd);line-height:1;">6 meses</div>
+        <div style="font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:.3rem 0 .5rem;">Revisão Obrigatória</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.85);line-height:1.5;">Revisão de performance e ajustes operacionais em todos os cargos e DPs.</div>
+      </div>
+      <div>
+        <div style="font-size:1.8rem;font-weight:700;font-family:'Playfair Display',serif;color:var(--gold-bd);line-height:1;">12 meses</div>
+        <div style="font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:.3rem 0 .5rem;">Reestruturação Possível</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.85);line-height:1.5;">Só após 12 meses se pode alterar a estrutura organizacional. Evita instabilidade.</div>
+      </div>
+      <div>
+        <div style="font-size:1.8rem;font-weight:700;font-family:'Playfair Display',serif;color:var(--gold-bd);line-height:1;">Maioria</div>
+        <div style="font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:.3rem 0 .5rem;">Aprovação Formal</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.85);line-height:1.5;">Alterações maiores exigem aprovação formal da Assembleia Geral.</div>
+      </div>
+      <div style="padding:1rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:12px;">
+        <div style="font-size:.75rem;font-weight:600;color:var(--white);margin-bottom:.4rem;">Garante:</div>
+        <div style="font-size:.75rem;color:rgba(255,255,255,.9);line-height:1.6;">✔ Estabilidade<br>✔ Crescimento controlado<br>✔ Flexibilidade</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════
+   03 — DEPARTAMENTOS
+══════════════════════════ -->
+<section class="section" id="depts">
+<div class="wrap">
+  <div class="ey rv">03 — Departamentos</div>
+  <h2 class="sec-title rv d1">Os 6 Motores <em>+ Expansões</em></h2>
+  <p class="sec-lead rv d2">Cada DP tem missão, sub-áreas internas e uma startup potencial. As sub-áreas permitem crescimento interno sem criar novos DPs — mais eficiência, menos burocracia.</p>
+
+  <div class="dept-grid">
+
+    <!-- DP-01 MARKETING & PARCERIAS -->
+    <div class="dc rv" onclick="openM('dp-mk')">
+      <div class="dc-top" style="border-top: 5px solid var(--rose);">
+        <span class="dc-icon">🎯</span>
+        <div class="dc-name">Marketing & Parcerias</div>
+        <span class="pc-tag tag-rose dc-tag">DP-01 · Activo</span>
+        <div class="dc-tagline">Posiciona a marca, atrai parceiros e converte visibilidade em recursos.</div>
+      </div>
+      <div class="dc-body">
+        <div class="dc-label">Responsabilidades</div>
+        <ul>
+          <li>Estratégia e posicionamento da marca The Graces</li>
+          <li>Prospeção de parceiros com empresas e instituições</li>
+          <li>Campanhas para eventos e projectos internos</li>
+          <li>Negociação de protocolos e patrocínios</li>
+        </ul>
+        <div class="sub-areas" style="border-color:var(--rose-bd);">
+          <div class="sub-title" style="color:var(--rose);">Sub-Áreas Internas</div>
+          <div class="sub-list">
+            <span class="sub-chip" style="background:var(--rose-bg);color:var(--rose);">Marketing Digital</span>
+            <span class="sub-chip" style="background:var(--rose-bg);color:var(--rose);">Relações Públicas</span>
+            <span class="sub-chip" style="background:var(--rose-bg);color:var(--rose);">Parcerias B2B</span>
+            <span class="sub-chip" style="background:var(--rose-bg);color:var(--rose);">Captação de Fundos</span>
+          </div>
+        </div>
+        <div class="startup-box" style="border-color:var(--rose);background:var(--rose-bg);">
+          <div class="startup-lbl" style="color:var(--rose);">💡 Startup Interna</div>
+          <div class="startup-txt" style="color:var(--body);">Agência de marketing B2B e parcerias estratégicas para startups e ONGs.</div>
+        </div>
+        <span class="fund-tag" style="background:var(--rose-bg);color:var(--rose);border:1px solid var(--rose-bd);">Fundo Beta</span>
+      </div>
+    </div>
+
+    <!-- DP-02 GESTÃO DE PROJETOS -->
+    <div class="dc rv d1" onclick="openM('dp-gp')">
+      <div class="dc-top" style="border-top: 5px solid var(--sage);">
+        <span class="dc-icon">⚡</span>
+        <div class="dc-name">Gestão de Projetos</div>
+        <span class="pc-tag tag-sage dc-tag">DP-02 · Activo</span>
+        <div class="dc-tagline">Garante que tudo o que é planeado acontece, com qualidade e no prazo. <strong>Não coordena as startups internas da associação</strong> — essa coordenação é do Diretor-Geral de Estratégia e Inovação.</div>
+      </div>
+      <div class="dc-body">
+        <div class="dc-label">Responsabilidades</div>
+        <ul>
+          <li>Metodologias internas: Agile, Scrum, OKRs</li>
+          <li>Roadmap estratégico da organização</li>
+          <li>Coordenação de projectos inter-departamentais</li>
+          <li>KPIs, métricas e relatórios de progresso</li>
+        </ul>
+        <div class="sub-areas" style="border-color:var(--sage-bd);">
+          <div class="sub-title" style="color:var(--sage);">Sub-Áreas Internas</div>
+          <div class="sub-list">
+            <span class="sub-chip" style="background:var(--sage-bg);color:var(--sage);">PMO Interno</span>
+            <span class="sub-chip" style="background:var(--sage-bg);color:var(--sage);">Qualidade & Processos</span>
+            <span class="sub-chip" style="background:var(--sage-bg);color:var(--sage);">Projectos Externos</span>
+          </div>
+        </div>
+        <div style="margin-top:.6rem;padding:.6rem .9rem;background:rgba(45,122,74,.08);border-left:4px solid var(--sage);font-size:.72rem;color:var(--body);line-height:1.5;">
+          O DP Gestão de Projetos <strong>não se envolve na coordenação das startups internas da associação</strong>. Essa função é do Diretor-Geral de Estratégia e Inovação, que coordena com os departamentos.
+        </div>
+        <div class="startup-box" style="border-color:var(--sage);background:var(--sage-bg);">
+          <div class="startup-lbl" style="color:var(--sage);">💡 Iniciativa do DP (serviço ao exterior)</div>
+          <div class="startup-txt" style="color:var(--body);">PMO as a Service para ONGs, municípios e pequenas empresas. Alta procura, baixa oferta.</div>
+        </div>
+        <span class="fund-tag" style="background:var(--sage-bg);color:var(--sage);border:1px solid var(--sage-bd);">Fundo Beta</span>
+      </div>
+    </div>
+
+    <!-- DP-03 COMUNICAÇÃO & IMAGEM -->
+    <div class="dc rv d2" onclick="openM('dp-ci')">
+      <div class="dc-top" style="border-top: 5px solid var(--violet);">
+        <span class="dc-icon">📡</span>
+        <div class="dc-name">Comunicação & Imagem</div>
+        <span class="pc-tag tag-violet dc-tag">DP-03 · Activo</span>
+        <div class="dc-tagline">A voz e o rosto da The Graces. Narrativas que atraem as pessoas certas.</div>
+      </div>
+      <div class="dc-body">
+        <div class="dc-label">Responsabilidades</div>
+        <ul>
+          <li>Identidade visual e guidelines da marca</li>
+          <li>Redes sociais, conteúdo e storytelling</li>
+          <li>Comunicados oficiais e relações com media</li>
+          <li>Newsletter e comunicação interna mensal</li>
+        </ul>
+        <div class="sub-areas" style="border-color:var(--violet-bd);">
+          <div class="sub-title" style="color:var(--violet);">Sub-Áreas Internas</div>
+          <div class="sub-list">
+            <span class="sub-chip" style="background:var(--violet-bg);color:var(--violet);">Design Gráfico</span>
+            <span class="sub-chip" style="background:var(--violet-bg);color:var(--violet);">Social Media</span>
+            <span class="sub-chip" style="background:var(--violet-bg);color:var(--violet);">Produção Audiovisual</span>
+            <span class="sub-chip" style="background:var(--violet-bg);color:var(--violet);">Relações com Media</span>
+          </div>
+        </div>
+        <div class="startup-box" style="border-color:var(--violet);background:var(--violet-bg);">
+          <div class="startup-lbl" style="color:var(--violet);">💡 Startup Interna</div>
+          <div class="startup-txt" style="color:var(--body);">Estúdio criativo de comunicação e branding para marcas, startups e eventos.</div>
+        </div>
+        <span class="fund-tag" style="background:var(--violet-bg);color:var(--violet);border:1px solid var(--violet-bd);">Fundo Beta</span>
+      </div>
+    </div>
+
+    <!-- DP-04 ADM & FINANÇAS -->
+    <div class="dc rv" onclick="openM('dp-af')">
+      <div class="dc-top" style="border-top: 5px solid var(--teal);">
+        <span class="dc-icon">🏛️</span>
+        <div class="dc-name">Administração & Finanças</div>
+        <span class="pc-tag tag-teal dc-tag">DP-04 · Activo</span>
+        <div class="dc-tagline">O esqueleto que mantém tudo de pé — processos, conformidade e sustentabilidade.</div>
+      </div>
+      <div class="dc-body">
+        <div class="dc-label">Responsabilidades</div>
+        <ul>
+          <li>Controlo financeiro operacional de todos os DPs</li>
+          <li>Processos administrativos e documentação legal</li>
+          <li>Apoio ao Tesoureiro/a e Secretário/a Geral</li>
+          <li>Candidatura a fundos externos (UE, Estado)</li>
+        </ul>
+        <div class="sub-areas" style="border-color:var(--teal-bd);">
+          <div class="sub-title" style="color:var(--teal);">Sub-Áreas Internas</div>
+          <div class="sub-list">
+            <span class="sub-chip" style="background:var(--teal-bg);color:var(--teal);">Contabilidade</span>
+            <span class="sub-chip" style="background:var(--teal-bg);color:var(--teal);">Jurídico & Contratos</span>
+            <span class="sub-chip" style="background:var(--teal-bg);color:var(--teal);">Candidatura a Fundos</span>
+          </div>
+        </div>
+        <div class="startup-box" style="border-color:var(--teal);background:var(--teal-bg);">
+          <div class="startup-lbl" style="color:var(--teal);">💡 Startup Interna</div>
+          <div class="startup-txt" style="color:var(--body);">Consultoria administrativa para micro-ONGs. Apoio em candidaturas a fundos.</div>
+        </div>
+        <span class="fund-tag" style="background:var(--teal-bg);color:var(--teal);border:1px solid var(--teal-bd);">Fundo Gamma</span>
+      </div>
+    </div>
+
+    <!-- DP-05 INOVAÇÃO -->
+    <div class="dc rv d1" onclick="openM('dp-inn')">
+      <div class="dc-top" style="border-top: 5px solid var(--gold);">
+        <span class="dc-icon">🚀</span>
+        <div class="dc-name">Inovação & Startups</div>
+        <span class="pc-tag tag-gold dc-tag">DP-05 · Alpha ★</span>
+        <div class="dc-tagline">O laboratório da The Graces. Onde ideias se transformam em projectos de impacto real.</div>
+      </div>
+      <div class="dc-body">
+        <div class="dc-label">Responsabilidades</div>
+        <ul>
+          <li>Gere o pipeline de Iniciativas Internas de todos os DPs</li>
+          <li>Incuba e acelera projectos de alto impacto</li>
+          <li>Hackathons e sprints de inovação</li>
+          <li>Avalia viabilidade técnica e comercial de ideias</li>
+        </ul>
+        <div class="sub-areas" style="border-color:var(--gold-bd);">
+          <div class="sub-title" style="color:var(--gold);">Sub-Áreas Internas</div>
+          <div class="sub-list">
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">Incubação</span>
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">I&D</span>
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">Hackathons</span>
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">Spin-Offs</span>
+          </div>
+        </div>
+        <div class="startup-box" style="border-color:var(--gold);background:var(--gold-bg);">
+          <div class="startup-lbl" style="color:var(--gold);">💡 Startup Alpha ★</div>
+          <div class="startup-txt" style="color:var(--body);">Aceleradora formal + Hackathon anual patrocinado. O DP mais estratégico da organização.</div>
+        </div>
+        <span class="fund-tag" style="background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-bd);">Fundo Alpha ★</span>
+      </div>
+    </div>
+
+    <!-- DP-06 COMUNIDADE -->
+    <div class="dc rv d2" onclick="openM('dp-com')">
+      <div class="dc-top" style="border-top: 5px solid var(--steel);">
+        <span class="dc-icon">🌍</span>
+        <div class="dc-name">Comunidade & Impacto</div>
+        <span class="pc-tag tag-steel dc-tag">DP-06 · Activo</span>
+        <div class="dc-tagline">Constrói a comunidade mais activa — eventos, formações e impacto social mensurável.</div>
+      </div>
+      <div class="dc-body">
+        <div class="dc-label">Responsabilidades</div>
+        <ul>
+          <li>Gestão da relação com membros e colaboradores</li>
+          <li>Eventos, meetups e conferências</li>
+          <li>Programas de formação e capacitação</li>
+          <li>Métricas e relatórios de impacto social</li>
+        </ul>
+        <div class="sub-areas" style="border-color:var(--steel-bd);">
+          <div class="sub-title" style="color:var(--steel);">Sub-Áreas Internas</div>
+          <div class="sub-list">
+            <span class="sub-chip" style="background:var(--steel-bg);color:var(--steel);">Eventos</span>
+            <span class="sub-chip" style="background:var(--steel-bg);color:var(--steel);">Formação</span>
+            <span class="sub-chip" style="background:var(--steel-bg);color:var(--steel);">Voluntariado</span>
+            <span class="sub-chip" style="background:var(--steel-bg);color:var(--steel);">Membros Premium</span>
+          </div>
+        </div>
+        <div class="startup-box" style="border-color:var(--steel);background:var(--steel-bg);">
+          <div class="startup-lbl" style="color:var(--steel);">💡 Startup Interna</div>
+          <div class="startup-txt" style="color:var(--body);">Plataforma de eventos e certificações. Academia online com cursos profissionais pagos.</div>
+        </div>
+        <span class="fund-tag" style="background:var(--steel-bg);color:var(--steel);border:1px solid var(--steel-bd);">Fundo Beta</span>
+      </div>
+    </div>
+
+    <!-- FUTURO: Tecnologia & Sistemas -->
+    <div class="dc future rv" onclick="openM('fut-tech')">
+      <div class="dc-top">
+        <div class="future-lbl">Fase 2 · Expansão</div>
+        <span class="dc-icon">⚙️</span>
+        <div class="dc-name">Tecnologia & Sistemas</div>
+        <div class="dc-tagline">Infra digital, ferramentas próprias e soluções SaaS. O ponto de entrada natural do Coordenador/a como eng. de software.</div>
+      </div>
+      <div class="dc-body">
+        <div class="sub-areas" style="border-color:var(--gold-bd);">
+          <div class="sub-title" style="color:var(--gold);">Sub-Áreas Previstas</div>
+          <div class="sub-list">
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">Dev Interno</span>
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">Infra & Segurança</span>
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">Agência de Software</span>
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">SaaS Tools</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FUTURO: Formação & Academia -->
+    <div class="dc future rv d1" onclick="openM('fut-acad')">
+      <div class="dc-top">
+        <div class="future-lbl">Fase 2 · Expansão</div>
+        <span class="dc-icon">🎓</span>
+        <div class="dc-name">Formação & Academia</div>
+        <div class="dc-tagline">Bootcamps, certificações e programas educativos. Linha de receita de alta margem e altíssima credibilidade.</div>
+      </div>
+      <div class="dc-body">
+        <div class="sub-areas" style="border-color:var(--gold-bd);">
+          <div class="sub-title" style="color:var(--gold);">Sub-Áreas Previstas</div>
+          <div class="sub-list">
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">Cursos Online</span>
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">Bootcamps</span>
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">Certificações</span>
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">Mentoria</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FUTURO: Recursos Humanos -->
+    <div class="dc future rv d2" onclick="openM('fut-rh')">
+      <div class="dc-top">
+        <div class="future-lbl">Fase 3 · Maturidade</div>
+        <span class="dc-icon">👥</span>
+        <div class="dc-name">Pessoas & Cultura</div>
+        <div class="dc-tagline">Recrutamento, desenvolvimento de talento e cultura organizacional. Activar quando a equipa ultrapassar 40 pessoas.</div>
+      </div>
+      <div class="dc-body">
+        <div class="sub-areas" style="border-color:var(--gold-bd);">
+          <div class="sub-title" style="color:var(--gold);">Sub-Áreas Previstas</div>
+          <div class="sub-list">
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">Recrutamento</span>
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">Desenvolvimento</span>
+            <span class="sub-chip" style="background:var(--gold-bg);color:var(--gold);">Cultura & Bem-Estar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Por que Sub-Áreas -->
+  <div style="margin-top:3.5rem; padding:2rem; background:var(--gold-bg); border:2px solid var(--gold-bd);" class="rv">
+    <div style="font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;">💡 Por que Sub-Áreas e não novos DPs?</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.5rem;">
+      <div>
+        <div style="font-size:.85rem;font-weight:700;color:var(--ink);margin-bottom:.4rem;">Crescimento sem Burocracia</div>
+        <div style="font-size:.8rem;color:var(--body);line-height:1.6;">Criar um novo DP exige novo líder, novo orçamento e nova representação na AG. Uma sub-área cresce dentro do DP existente com zero overhead organizacional.</div>
+      </div>
+      <div>
+        <div style="font-size:.85rem;font-weight:700;color:var(--ink);margin-bottom:.4rem;">Especialização Gradual</div>
+        <div style="font-size:.8rem;color:var(--body);line-height:1.6;">Uma sub-área começa pequena. Se crescer muito, pode ser promovida a DP completo. O crescimento é orgânico e controlado — não forçado.</div>
+      </div>
+      <div>
+        <div style="font-size:.85rem;font-weight:700;color:var(--ink);margin-bottom:.4rem;">Agilidade Operacional</div>
+        <div style="font-size:.8rem;color:var(--body);line-height:1.6;">Cada sub-área tem o seu responsável mas reporta ao Líder do DP. Decisões são mais rápidas, sem escalar para o/a Coord. Geral em cada detalhe.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════
+   04 — PLANO DE CRESCIMENTO
+══════════════════════════ -->
+<section class="section growth-section" id="growth">
+<div class="wrap">
+  <div class="ey rv">04 — Expansão Controlada</div>
+  <h2 class="sec-title rv d1">Plano de <em>Crescimento</em></h2>
+  <p class="sec-lead rv d2">A The Graces cresce por fases. Cada fase tem gatilhos de activação claros, número de pessoas, novos DPs e upgrades de estrutura. Nunca se cresce por impulso — cresce-se com inteligência.</p>
+
+  <div class="phase-grid">
+
+    <div class="phase-card rv">
+      <div class="ph-num">1</div>
+      <div class="ph-tag" style="color:var(--sage);">Fase 1 · Fundação</div>
+      <div class="ph-name">Arranque</div>
+      <div class="ph-period" style="color:var(--mid);">Mês 0 → Mês 12</div>
+      <div class="ph-people" style="color:var(--sage);">18–25</div>
+      <div class="ph-people-lbl">Pessoas</div>
+      <ul class="ph-items">
+        <li>Constituição da The Graces (registo ou informal)</li>
+        <li>Activar os 6 DPs core com pelo menos 2–3 pessoas cada</li>
+        <li>Definir estatuto, regulamento interno e OKRs</li>
+        <li>Primeiras iniciativas internas e portfólio</li>
+        <li>Primeiras parcerias e visibilidade pública</li>
+      </ul>
+      <div class="ph-dps">
+        <div class="ph-dps-lbl">DPs Activos</div>
+        <div class="ph-dps-list">
+          <span class="dp-chip" style="background:var(--rose-bg);color:var(--rose);">Marketing</span>
+          <span class="dp-chip" style="background:var(--sage-bg);color:var(--sage);">Projetos</span>
+          <span class="dp-chip" style="background:var(--violet-bg);color:var(--violet);">Comunicação</span>
+          <span class="dp-chip" style="background:var(--teal-bg);color:var(--teal);">Adm & Fin.</span>
+          <span class="dp-chip" style="background:var(--gold-bg);color:var(--gold);">Inovação</span>
+          <span class="dp-chip" style="background:var(--steel-bg);color:var(--steel);">Comunidade</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-card rv d1">
+      <div class="ph-num">2</div>
+      <div class="ph-tag" style="color:var(--steel);">Fase 2 · Crescimento</div>
+      <div class="ph-name">Expansão</div>
+      <div class="ph-period" style="color:var(--mid);">Mês 12 → Mês 30</div>
+      <div class="ph-people" style="color:var(--steel);">25–50</div>
+      <div class="ph-people-lbl">Pessoas</div>
+      <ul class="ph-items">
+        <li><strong>Gatilho:</strong> 2+ startups internas a gerar receita</li>
+        <li>Activar DP de Tecnologia & Sistemas</li>
+        <li>Activar DP de Formação & Academia</li>
+        <li>Estruturar sub-áreas em todos os DPs activos</li>
+        <li>Primeiro relatório de impacto anual publicado</li>
+        <li>Formalizar primeira parceria de alto nível</li>
+      </ul>
+      <div class="ph-dps">
+        <div class="ph-dps-lbl">Novos DPs</div>
+        <div class="ph-dps-list">
+          <span class="dp-chip" style="background:var(--gold-bg);color:var(--gold);">+ Tecnologia</span>
+          <span class="dp-chip" style="background:var(--gold-bg);color:var(--gold);">+ Academia</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-card rv d2">
+      <div class="ph-num">3</div>
+      <div class="ph-tag" style="color:var(--gold);">Fase 3 · Maturidade</div>
+      <div class="ph-name">Consolidação</div>
+      <div class="ph-period" style="color:var(--mid);">Mês 30 → Mês 54</div>
+      <div class="ph-people" style="color:var(--gold);">50–80</div>
+      <div class="ph-people-lbl">Pessoas</div>
+      <ul class="ph-items">
+        <li><strong>Gatilho:</strong> 50+ membros activos e receita estável</li>
+        <li>Activar DP de Pessoas & Cultura</li>
+        <li>Primeiro spin-off formal com parceria da organização</li>
+        <li>Revisão e upgrade do estatuto e estrutura</li>
+        <li>Expansão para outras cidades ou regiões</li>
+        <li>Conselho Estratégico com membros externos de prestígio</li>
+      </ul>
+      <div class="ph-dps">
+        <div class="ph-dps-lbl">Novo DP</div>
+        <div class="ph-dps-list">
+          <span class="dp-chip" style="background:var(--gold-bg);color:var(--gold);">+ Pessoas & Cultura</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase-card rv d3">
+      <div class="ph-num">4</div>
+      <div class="ph-tag" style="color:var(--rose);">Fase 4 · Escala</div>
+      <div class="ph-name">Referência</div>
+      <div class="ph-period" style="color:var(--mid);">Mês 54+</div>
+      <div class="ph-people" style="color:var(--rose);">80–150+</div>
+      <div class="ph-people-lbl">Pessoas</div>
+      <ul class="ph-items">
+        <li><strong>Gatilho:</strong> Referência no ecossistema, cobertura nacional</li>
+        <li>DPs com orçamento próprio autossustentável</li>
+        <li>The Graces como marca reconhecida</li>
+        <li>Possibilidade de federação com outras organizações</li>
+        <li>Avaliação de novos DPs estratégicos (Saúde, Ambiente, etc.)</li>
+      </ul>
+      <div class="ph-dps">
+        <div class="ph-dps-lbl">A definir</div>
+        <div class="ph-dps-list">
+          <span class="dp-chip" style="background:var(--rose-bg);color:var(--rose);">Conforme necessidade</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Regras de activação de novo DP -->
+  <div style="margin-top:3.5rem;padding:2rem;background:var(--white);border:2px solid var(--gold-bd);border-radius:12px;box-shadow:0 8px 32px rgba(176,125,42,.12);" class="rv">
+    <div style="font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">📋 Regras para Activar um Novo Departamento</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;">
+      <div style="padding:1rem;background:var(--bg);border-left:4px solid var(--gold);">
+        <div style="font-size:.75rem;font-weight:700;color:var(--ink);margin-bottom:.3rem;">Necessidade Real</div>
+        <div style="font-size:.75rem;color:var(--mid);line-height:1.5;">Existe trabalho suficiente que não pode ser gerido como sub-área de um DP existente.</div>
+      </div>
+      <div style="padding:1rem;background:var(--bg);border-left:4px solid var(--sage);">
+        <div style="font-size:.75rem;font-weight:700;color:var(--ink);margin-bottom:.3rem;">Líder Identificado</div>
+        <div style="font-size:.75rem;color:var(--mid);line-height:1.5;">Existe uma pessoa com capacidade e disponibilidade para liderar o novo DP de forma comprometida.</div>
+      </div>
+      <div style="padding:1rem;background:var(--bg);border-left:4px solid var(--steel);">
+        <div style="font-size:.75rem;font-weight:700;color:var(--ink);margin-bottom:.3rem;">Fundo Disponível</div>
+        <div style="font-size:.75rem;color:var(--mid);line-height:1.5;">Existe orçamento para sustentar o novo DP pelo menos 2 trimestres sem gerar receita própria.</div>
+      </div>
+      <div style="padding:1rem;background:var(--bg);border-left:4px solid var(--rose);">
+        <div style="font-size:.75rem;font-weight:700;color:var(--ink);margin-bottom:.3rem;">Aprovação da AG</div>
+        <div style="font-size:.75rem;color:var(--mid);line-height:1.5;">A Assembleia Geral aprova por maioria simples a criação do novo departamento e a sua missão.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════
+   05 — AUTONOMIA
+══════════════════════════ -->
+<section class="section auto-section" id="auto">
+<div class="wrap">
+  <div class="ey rv">05 — Autonomia & Fundos</div>
+  <h2 class="sec-title rv d1">Poder <em>no Nível Certo</em></h2>
+  <p class="sec-lead rv d2">Cinco níveis de decisão. Cada nível decide o que é seu. Só se escala quando o impacto o justifica. Velocidade máxima, burocracia mínima.</p>
+
+  <div class="auto-grid">
+    <div class="auto-card rv">
+      <div class="ac-bar" style="background:var(--line);"></div>
+      <div class="ac-num">1</div>
+      <div class="ac-lbl" style="color:var(--soft);">Colaborador</div>
+      <div class="ac-name">Básico</div>
+      <div class="ac-range" style="color:var(--mid);">Até valor mínimo</div>
+      <div class="ac-who">Colaboradores e sub-líderes. Despesas operacionais diárias do projecto.</div>
+      <div class="ac-eg">Ex: materiais, transporte, subscrições básicas</div>
+    </div>
+    <div class="auto-card rv d1">
+      <div class="ac-bar" style="background:var(--teal);"></div>
+      <div class="ac-num">2</div>
+      <div class="ac-lbl" style="color:var(--teal);">Líder DP</div>
+      <div class="ac-name">Operacional</div>
+      <div class="ac-range" style="color:var(--teal);">Dentro do fundo do DP</div>
+      <div class="ac-who">Opera livremente dentro do fundo aprovado. Total autonomia. Sem pedir aprovação.</div>
+      <div class="ac-eg">Ex: freelancer, campanha, equipamento, eventos</div>
+    </div>
+    <div class="auto-card rv d2">
+      <div class="ac-bar" style="background:var(--steel);"></div>
+      <div class="ac-num">3</div>
+      <div class="ac-lbl" style="color:var(--steel);">Direção</div>
+      <div class="ac-name">Executiva</div>
+      <div class="ac-range" style="color:var(--steel);">Acima do limite do DP</div>
+      <div class="ac-who">Decisões que superam o fundo ou envolvem outro DP. Reunião rápida.</div>
+      <div class="ac-eg">Ex: contratos de serviços, expansão de equipa</div>
+    </div>
+    <div class="auto-card rv d3">
+      <div class="ac-bar" style="background:var(--gold);"></div>
+      <div class="ac-num">4</div>
+      <div class="ac-lbl" style="color:var(--gold);">Coord. Geral</div>
+      <div class="ac-name">Estratégica</div>
+      <div class="ac-range" style="color:var(--gold);">Decisões críticas</div>
+      <div class="ac-who">Decisões que afectam toda a organização ou lançamento formal de startups.</div>
+      <div class="ac-eg">Ex: lançar startup, protocolo com empresa grande</div>
+    </div>
+    <div class="auto-card rv d4">
+      <div class="ac-bar" style="background:var(--rose);"></div>
+      <div class="ac-num">5</div>
+      <div class="ac-lbl" style="color:var(--rose);">Assembleia</div>
+      <div class="ac-name">Soberana</div>
+      <div class="ac-range" style="color:var(--rose);">Decisões irreversíveis</div>
+      <div class="ac-who">Apenas para mudanças estruturais, estatuto ou decisões que alteram o DNA da organização.</div>
+      <div class="ac-eg">Ex: alterar estatuto, dissolver, fusão</div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ══════════════════════════
+   06 — MOTOR STARTUPS
+══════════════════════════ -->
+<section class="section engine-section" id="engine">
+<div class="wrap">
+  <div class="ey rv">06 — Motor de Inovação</div>
+  <h2 class="sec-title rv d1">Da Ideia ao <em>Mercado</em></h2>
+  <p class="sec-lead rv d2">Investimos em startups e projetos para ganhar visibilidade e gerar <strong>receita que sustenta a causa</strong> e permite investir em iniciativas benéficas para a sociedade. Qualquer membro propõe, qualquer DP executa — e o que entra reverte para a The Graces e para mais impacto.</p>
+
+  <div class="flow-grid rv">
+    <div class="flow-step"><div class="fs-n">01</div><div class="fs-t">Ideação no DP</div><div class="fs-d">Qualquer membro propõe uma ideia ao Líder de DP. Uma página. Sem burocracia.</div></div>
+    <div class="flow-step"><div class="fs-n">02</div><div class="fs-t">Validação Interna</div><div class="fs-d">Líder avalia viabilidade. Se aprovado, DP de Inovação faz análise de mercado.</div></div>
+    <div class="flow-step"><div class="fs-n">03</div><div class="fs-t">Pitch & Fundo</div><div class="fs-d">Pitch de 5 min ao/à Coord. Geral + Tesoureiro/a. Aprovação de fundo com milestones.</div></div>
+    <div class="flow-step"><div class="fs-n">04</div><div class="fs-t">Desenvolvimento</div><div class="fs-d">DP executa com total autonomia. Usa recursos da The Graces. Relatório mensal.</div></div>
+    <div class="flow-step"><div class="fs-n">05</div><div class="fs-t">Mercado</div><div class="fs-d">O projeto chega a empresas e instituições. A receita reverte para a The Graces e para o DP — e sustenta a causa e o investimento em projetos com impacto social.</div></div>
+    <div class="flow-step" style="border-right:none;"><div class="fs-n">06</div><div class="fs-t">Spin-Off</div><div class="fs-d">Se cresce muito, torna-se entidade separada com parceria formal e participação da organização.</div></div>
+  </div>
+
+  <div class="rev-grid">
+    <div class="rev-card rv">
+      <div class="rev-name" style="color:var(--sage);">Fontes de Receita por DP</div>
+      <ul class="rev-ul">
+        <li>Agência de marketing B2B (Marketing)</li>
+        <li>PMO as a Service para ONGs (Projetos)</li>
+        <li>Estúdio criativo de comunicação (Comunicação)</li>
+        <li>Consultoria admin para micro-ONGs (Adm)</li>
+        <li>Aceleradora + hackathons patrocinados (Inovação)</li>
+        <li>Eventos pagos e certificações (Comunidade)</li>
+        <li>Agência de software e SaaS (Tecnologia – Fase 2)</li>
+      </ul>
+    </div>
+    <div class="rev-card rv d1">
+      <div class="rev-name" style="color:var(--gold);">O que Constrói o Portfólio</div>
+      <ul class="rev-ul">
+        <li>Todo projecto com cliente real é um caso de estudo</li>
+        <li>Estudos de caso para atrair parceiros maiores</li>
+        <li>Ferramentas criadas mesmo sem receita directa</li>
+        <li>Relatórios de impacto social para candidaturas</li>
+        <li>Prémios e reconhecimentos das iniciativas</li>
+        <li>Rede de membros como embaixadores activos</li>
+        <li>Presença pública em eventos e media</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════
+   07 — IMPACTO
+══════════════════════════ -->
+<section class="section impact-section" id="impact">
+<div class="wrap">
+  <div class="ey rv">07 — Proposta de Valor</div>
+  <h2 class="sec-title rv d1">Por que a <em>The Graces</em> é Diferente</h2>
+  <p class="sec-lead rv d2">Somos uma <strong>associação sem fins lucrativos</strong> centrada em <strong>apoiar o próximo</strong>. A estrutura profissional, as startups e as fontes de receita existem para sustentar esta causa e para investir em projetos com impacto na sociedade e em quem mais precisa — de forma clara e criativa.</p>
+
+  <div class="impact-grid">
+    <div class="ic rv"><div class="ic-icon">🏗️</div><div class="ic-title">Estrutura que Não Depende de Génios</div><div class="ic-text">Processos claros, papéis definidos e hierarquia sem ambiguidade. Qualquer pessoa competente consegue operar e fazer crescer a organização.</div></div>
+    <div class="ic rv d1"><div class="ic-icon">🚀</div><div class="ic-title">Opera com 18, Escala para 150</div><div class="ic-text">Desenhada para arrancar com 18 pessoas e crescer por fases com gatilhos de activação claros. Nunca cresce por impulso.</div></div>
+    <div class="ic rv d2"><div class="ic-icon">💰</div><div class="ic-title">Receita ao Serviço da Causa</div><div class="ic-text">A receita que geramos — com projetos, startups e serviços — sustenta a associação e permite investir em iniciativas benéficas para a sociedade e para quem mais precisa. Nada é fim em si mesmo; tudo serve o objetivo de apoiar o próximo.</div></div>
+    <div class="ic rv d3"><div class="ic-icon">🔬</div><div class="ic-title">Sub-Áreas que Evitam Burocracia</div><div class="ic-text">Cada DP cresce internamente com sub-áreas antes de pedir novos recursos. Especialização gradual, custo zero de reorganização.</div></div>
+    <div class="ic rv"><div class="ic-icon">🧠</div><div class="ic-title">Autonomia com Responsabilidade</div><div class="ic-text">Cada Líder de DP é o CEO do seu universo. Total liberdade para gerir. Total responsabilidade para entregar resultados.</div></div>
+    <div class="ic rv d1"><div class="ic-icon">📈</div><div class="ic-title">Portfólio que Cresce com Cada Projecto</div><div class="ic-text">Cada cliente satisfeito é uma referência. Cada iniciativa é um caso de estudo. A The Graces constrói reputação desde o primeiro dia.</div></div>
+  </div>
+
+  <div class="num-strip rv">
+    <div class="ns-item" style="border-color:var(--gold);">
+      <div class="ns-num" style="color:var(--gold-bd);">18+</div>
+      <div class="ns-lbl">Pessoas Fase 1</div>
+    </div>
+    <div class="ns-item" style="border-color:var(--rose);">
+      <div class="ns-num" style="color:rgba(196,120,106,.8);">6</div>
+      <div class="ns-lbl">DPs Activos</div>
+    </div>
+    <div class="ns-item" style="border-color:var(--sage);">
+      <div class="ns-num" style="color:rgba(106,140,114,.8);">4</div>
+      <div class="ns-lbl">Fases de Crescimento</div>
+    </div>
+    <div class="ns-item" style="border-color:var(--steel);">
+      <div class="ns-num" style="color:rgba(77,148,200,.8);">12+</div>
+      <div class="ns-lbl">DPs no Horizonte</div>
+    </div>
+    <div class="ns-item" style="border-color:var(--violet);">
+      <div class="ns-num" style="color:rgba(155,109,200,.8);">∞</div>
+      <div class="ns-lbl">Potencial de Escala</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════════════════════════
+   08 — ESTATUTO
+══════════════════════════ -->
+<section class="section estatuto-section" id="estatuto">
+<div class="wrap">
+  <div class="ey rv">08 — Documento Formal</div>
+  <h2 class="sec-title rv d1">Modelo de <em>Estatuto</em></h2>
+  <p class="sec-lead rv d2">Documento base profissional. Substitua os valores em [parêntesis] pelos dados reais da The Graces.</p>
+
+  <div class="doc rv">
+    <div class="doc-head">
+      <div class="doc-the">The</div>
+      <div class="doc-graces">Graces</div>
+      <div class="doc-sub">Estatutos da Associação · Versão 1.0</div>
+    </div>
+    <div class="doc-body">
+
+      <div class="art">
+        <h4>Artigo 1.º — Denominação, Sede e Duração</h4>
+        <p>A Associação denomina-se <strong>THE GRACES</strong>, é uma <strong>associação sem fins lucrativos</strong>, tem sede em <strong>[LOCAL]</strong>, funciona por tempo indeterminado e pode criar delegações em qualquer território.</p>
+      </div>
+
+      <div class="art">
+        <h4>Artigo 2.º — Missão, Visão e Valores</h4>
+        <ol>
+          <li><strong>Missão:</strong> A The Graces é uma associação sem fins lucrativos com o objetivo de <strong>apoiar o próximo</strong>. Investimos em startups e projetos para ganhar visibilidade e gerar receitas que permitem sustentar a causa e investir de forma criativa em iniciativas benéficas para a sociedade e para quem mais precisa. Tudo o que fazemos gira em torno deste propósito.</li>
+          <li><strong>Visão:</strong> Ser referência como associação que alia inovação, impacto social e boa governação — crescendo de forma sustentada para ampliar a capacidade de ajudar.</li>
+          <li>A Associação pauta a sua actuação pelos valores de inovação, autonomia responsável, transparência e crescimento sustentável.</li>
+        </ol>
+      </div>
+
+      <div class="art">
+        <h4>Artigo 3.º — Órgãos Sociais</h4>
+        <ol>
+          <li><strong>Assembleia Geral</strong> — órgão soberano composto pelos Líderes de todos os Departamentos activos;</li>
+          <li><strong>Conselho Estratégico</strong> — 3 a 5 membros sénior eleitos pela AG para a visão de longo prazo;</li>
+          <li><strong>Direção Executiva</strong> — Coordenador/a Geral, Vice, Secretário/a e Tesoureiro/a;</li>
+          <li><strong>Diretor/a-Geral de Estratégia e Inovação</strong> — ponto de reporte dos Líderes de Departamento; coordena as startups internas da associação com os departamentos; poder estratégico, não executivo;</li>
+          <li><strong>Conselho Fiscal</strong> — 3 membros independentes;</li>
+          <li><strong>Departamentos</strong> — unidades operacionais autónomas com sub-áreas internas.</li>
+        </ol>
+      </div>
+
+      <div class="art">
+        <h4>Artigo 4.º — Assembleia Geral</h4>
+        <ol>
+          <li>Reúne ordinariamente duas vezes por ano. Extraordinariamente por convocação do Conselho Estratégico ou de um terço dos membros.</li>
+          <li>Competências exclusivas: eleger e destituir órgãos; aprovar plano estratégico; deliberar sobre alterações estatutárias (maioria ⅔); aprovar relatórios anuais.</li>
+        </ol>
+      </div>
+
+      <div class="art">
+        <h4>Artigo 5.º — Conselho Estratégico</h4>
+        <ol>
+          <li>3 a 5 membros eleitos pela AG com mandatos de 3 anos. Independentes — sem cargo operacional activo.</li>
+          <li>Define visão de longo prazo; valida plano estratégico; pode vetar decisões da Direção contrárias à missão.</li>
+        </ol>
+      </div>
+
+      <div class="art">
+        <h4>Artigo 6.º — Coordenador/a Geral e Direção Executiva</h4>
+        <ol>
+          <li>Eleitos pela AG por mandatos de 2 anos, renováveis uma única vez no mesmo cargo.</li>
+          <li>O/A Coordenador/a Geral representa legalmente e lidera operacionalmente toda a organização. Está num nível mais acima e não atende assuntos de baixo nível entre Departamentos.</li>
+          <li>Os Líderes de Departamento reportam ao/à Diretor/a-Geral de Estratégia e Inovação (DGE), que coordena as startups internas da associação com os departamentos. O DGE não tem poder executivo directo — propõe e recomenda; a decisão final é do/a Coordenador/a Geral.</li>
+          <li>Decisões financeiras acima de [valor crítico] requerem aprovação conjunta do/a Coordenador/a e Tesoureiro/a.</li>
+          <li>Membros da Direção não acumulam Liderança de Departamento activo.</li>
+        </ol>
+      </div>
+
+      <div class="art">
+        <h4>Artigo 7.º — Departamentos, Sub-Áreas e Autonomia</h4>
+        <ol>
+          <li>Cada Departamento é unidade autónoma com orçamento anual próprio aprovado pela Direção.</li>
+          <li>O Líder de Departamento tem total autonomia de gestão, metodologia e alocação do fundo dentro dos limites aprovados.</li>
+          <li>Os Departamentos podem criar Sub-Áreas Internas geridas por responsáveis designados pelo Líder, sem necessidade de aprovação da AG.</li>
+          <li>Os Departamentos podem desenvolver Iniciativas Internas (projectos comerciais, serviços a terceiros) desde que aprovadas pelo/a Coordenador/a Geral.</li>
+          <li>A receita das Iniciativas Internas reverte para a Associação, com percentagem reinvestida no Departamento gerador, conforme regulamento interno.</li>
+          <li>Cada Líder integra automaticamente a Assembleia Geral e entrega relatório mensal.</li>
+        </ol>
+      </div>
+
+      <div class="art">
+        <h4>Artigo 8.º — Criação e Extinção de Departamentos</h4>
+        <ol>
+          <li>Um novo Departamento pode ser criado quando: existe necessidade operacional não coberta por sub-áreas; existe líder identificado e comprometido; existe fundo disponível por pelo menos dois trimestres.</li>
+          <li>A criação de novos Departamentos é aprovada pela Assembleia Geral por maioria simples.</li>
+          <li>Um Departamento pode ser extinto por decisão da AG por maioria simples, com aviso prévio de 60 dias ao seu líder.</li>
+        </ol>
+      </div>
+
+      <div class="art">
+        <h4>Artigo 9.º — Fundo de Inovação e Startups Internas</h4>
+        <ol>
+          <li>A Associação mantém um Fundo de Inovação anual para Iniciativas Internas dos Departamentos.</li>
+          <li>A coordenação das startups internas da associação com os departamentos é da responsabilidade do/a Diretor/a-Geral de Estratégia e Inovação; o Departamento de Gestão de Projetos não se envolve nesta coordenação.</li>
+          <li>Os Departamentos são classificados por nível de fundo (Alpha, Beta, Gamma), revisto anualmente com base em resultados.</li>
+          <li>Projectos com potencial de spin-off podem ser formalizados como entidades separadas com participação da Associação, aprovadas pelo Conselho Estratégico.</li>
+        </ol>
+      </div>
+
+      <div class="art">
+        <h4>Artigo 10.º — Dissolução</h4>
+        <ol>
+          <li>Dissolução por deliberação da AG com maioria de três quartos.</li>
+          <li>O património é afecto a entidade de fins análogos designada na deliberação.</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ══════ MODAL ══════ -->
+<div class="modal-bg" id="modal" onclick="closeM(event)">
+  <div class="modal-box">
+    <div class="modal-stripe" id="ms"></div>
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeM()">✕</button>
+      <div class="m-layer" id="ml"></div>
+      <div class="m-title" id="mt"></div>
+      <div id="mc"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const D = {
+  ag:{l:'Camada 0 · Soberania',t:'Assembleia Geral',c:'var(--gold)',s:[
+    {h:'Composição',i:['Todos os Líderes de Departamentos activos — um voto cada','Pode incluir membros honorários sem direito a voto','Reunião obrigatória 2× por ano (mínimo)']},
+    {h:'Poderes',i:['Elege e destitui cargos da Direção','Aprova plano estratégico e orçamento anual','Altera estatutos (maioria ⅔)','Aprova criação de novos Departamentos','Delibera sobre dissolução (maioria ¾)']}
+  ]},
+  dge:{l:'Camada 1 · Estratégia',t:'Diretor-Geral de Estratégia e Inovação',c:'var(--violet)',s:[
+    {h:'Essência do Cargo',i:['Os Líderes de DP reportam ao DGE (não à Coord. Geral para o dia-a-dia).','Coordena as startups internas da associação com os departamentos e com a Direção.','Arquitecto de crescimento — poder estratégico, não executivo. Propõe e recomenda; a decisão final é da Coord. Geral.']},
+    {h:'Funções',i:['Receber reporte dos Líderes de DP e coordenar assuntos entre DPs','Coordenação das startups internas da associação com os DPs','Propor plano estratégico semestral','Definir metas de inovação','Avaliar impacto e escalabilidade dos projectos','Propor criação, fusão ou melhoria de DPs','Desenvolver o modelo de startups internas']},
+    {h:'Limites (o que o DGE não faz)',i:['Não tem poder executivo directo — não aprova despesas nem contratos','Não substitui a Coordenadora Geral','Não decide orçamentos nem nomeações; recomenda à Coord. Geral','Todas as propostas do DGE precisam de aprovação da Coord. Geral']}
+  ]},
+  cf:{l:'Fiscalização · Independente',t:'Conselho Fiscal',c:'var(--sage)',s:[
+    {h:'Composição',i:['3 membros totalmente independentes','Preferencialmente com formação financeira ou jurídica']},
+    {h:'Poderes',i:['Audita contas e movimentos financeiros','Emite parecer obrigatório sobre orçamento','Pode convocar AG extraordinária em casos graves','Verifica legalidade das deliberações financeiras']}
+  ]},
+  cg:{l:'Camada 2A · Comando',t:'Coordenador/a Geral',c:'var(--gold)',s:[
+    {h:'Nível e Âmbito',i:['Está num nível mais acima — não atende assuntos de baixo nível entre DPs.','A coordenação do dia-a-dia e das startups internas com os departamentos é do Diretor-Geral de Estratégia e Inovação. Os Líderes de DP reportam ao DGE.']},
+    {h:'Autoridade Executiva Máxima',i:['Representação legal da organização','Aprovação final de orçamento e alocação de fundos','Aprovação de startups internas','Nomeação e avaliação de Líderes de DP','Assinatura de contratos estratégicos','Pode suspender decisões que prejudiquem a organização']},
+    {h:'Revisão e Mandato',i:['Revisão de desempenho: a cada 6 meses','Mandato mínimo recomendado: 12 meses']},
+    {h:'Na Fase Inicial',i:['Concentra criatividade, visão e execução','As ferramentas que constróis como eng. de software são ativos reais','Delegas gradualmente à medida que a equipa cresce']}
+  ]},
+  dir:{l:'Camada 2B · Suporte',t:'Direção Executiva',c:'var(--steel)',s:[
+    {h:'Membros',i:['Vice-Coordenador/a: segundo a bordo','Secretário/a Geral: documentação e conformidade','Tesoureiro/a: finanças e fundos']},
+    {h:'Funcionamento',i:['Apoia o/a Coord. Geral em todas as decisões','Decide coletivamente em ausência do/a Coord. Geral','Nenhum membro acumula Liderança de DP activo','Reunião mensal obrigatória com ata publicada']}
+  ]},
+  'dp-mk':{l:'Departamento 01 · Activo',t:'Marketing & Parcerias',c:'var(--rose)',s:[
+    {h:'Sub-Áreas',i:['Marketing Digital — SEO, anúncios, redes sociais','Relações Públicas — media, comunicados, eventos externos','Parcerias B2B — prospeção, negociação, protocolos','Captação de Fundos — candidaturas e patrocínios']},
+    {h:'Startup Interna',i:['Agência de marketing B2B para startups e ONGs','Gestão de redes sociais como serviço (SMM)','Consultoria de posicionamento para marcas locais','Comissionamento por parcerias fechadas entre terceiros']}
+  ]},
+  'dp-gp':{l:'Departamento 02 · Activo',t:'Gestão de Projetos',c:'var(--sage)',s:[
+    {h:'Âmbito',i:['Este DP não coordena as startups internas da associação. A coordenação das startups internas com os departamentos é do Diretor-Geral de Estratégia e Inovação.']},
+    {h:'Sub-Áreas',i:['PMO Interno — processos e metodologias da organização','Qualidade & Processos — melhoria contínua e normas','Projectos Externos — prestação de serviços a terceiros']},
+    {h:'Iniciativa do DP (serviço ao exterior)',i:['PMO as a Service para ONGs e municípios','Consultoria ágil para startups e pequenas empresas','Formações certificadas em gestão de projectos']}
+  ]},
+  'dp-ci':{l:'Departamento 03 · Activo',t:'Comunicação & Imagem',c:'var(--violet)',s:[
+    {h:'Sub-Áreas',i:['Design Gráfico — identidade visual, peças e templates','Social Media — gestão de redes e calendário editorial','Produção Audiovisual — fotos, vídeos e podcasts','Relações com Media — imprensa, press releases, entrevistas']},
+    {h:'Startup Interna',i:['Estúdio criativo de branding para startups','Produção audiovisual para eventos corporativos','Gestão de comunicação para marcas']}
+  ]},
+  'dp-af':{l:'Departamento 04 · Activo',t:'Administração & Finanças',c:'var(--teal)',s:[
+    {h:'Sub-Áreas',i:['Contabilidade — controlo de contas e relatórios','Jurídico & Contratos — conformidade legal e acordos','Candidatura a Fundos — UE, Estado, fundações']},
+    {h:'Startup Interna',i:['Consultoria administrativa para micro-ONGs','Apoio em candidaturas a fundos externos','Formações em gestão e conformidade legal']}
+  ]},
+  'dp-inn':{l:'Departamento 05 · Alpha ★',t:'Inovação & Startups',c:'var(--gold)',s:[
+    {h:'Sub-Áreas',i:['Incubação — acompanhamento de Iniciativas Internas','I&D — pesquisa de tendências e oportunidades','Hackathons — organização de eventos de inovação','Spin-Offs — formalização de projectos em empresas']},
+    {h:'Startup Alpha ★',i:['Aceleradora formal com programa estruturado','Hackathon anual patrocinado por empresas','Pipeline de projectos pré-seed com visibilidade']}
+  ]},
+  'dp-com':{l:'Departamento 06 · Activo',t:'Comunidade & Impacto',c:'var(--steel)',s:[
+    {h:'Sub-Áreas',i:['Eventos — meetups, conferências e hackathons','Formação — workshops, bootcamps e cursos','Voluntariado — responsabilidade social e acção comunitária','Membros Premium — programa exclusivo com benefícios']},
+    {h:'Startup Interna',i:['Plataforma de eventos com ticketing próprio','Academia online com cursos pagos','Programa premium de membros']}
+  ]},
+  'fut-tech':{l:'Fase 2 · Expansão',t:'Tecnologia & Sistemas',c:'var(--gold)',s:[
+    {h:'Quando Activar',i:['Fase 2 — quando existir capacidade técnica interna suficiente','Na fase inicial este papel é do/a Coordenador/a Geral','Pode ser o primeiro novo DP activado após a Fase 1']},
+    {h:'Sub-Áreas Previstas',i:['Dev Interno — ferramentas e plataformas próprias','Infra & Segurança — servidores, domínios e dados','Agência de Software — desenvolvimento para clientes externos','SaaS Tools — produtos próprios licenciáveis']}
+  ]},
+  'fut-acad':{l:'Fase 2 · Expansão',t:'Formação & Academia',c:'var(--gold)',s:[
+    {h:'Quando Activar',i:['Fase 2 — após consolidação dos 6 DPs core','Quando existir reputação suficiente para vender formação','Linha de receita mais escalável da organização']},
+    {h:'Sub-Áreas Previstas',i:['Cursos Online — plataforma digital com subscrição','Bootcamps — programas intensivos presenciais e online','Certificações — qualificações com valor reconhecido','Mentoria — programa de acompanhamento individualizado']}
+  ]},
+  'fut-rh':{l:'Fase 3 · Maturidade',t:'Pessoas & Cultura',c:'var(--gold)',s:[
+    {h:'Quando Activar',i:['Fase 3 — quando a equipa ultrapassar 40 pessoas activas','Quando a gestão de talento exigir processos estruturados']},
+    {h:'Sub-Áreas Previstas',i:['Recrutamento — atração e seleção de talento','Desenvolvimento — formação interna e planos de carreira','Cultura & Bem-Estar — clima organizacional e saúde']}
+  ]}
+};
+
+function go(id, btn) {
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:document.getElementById('nav').offsetTop,behavior:'smooth'});
+  setTimeout(doReveal, 60);
+}
+
+function openM(key) {
+  const d = D[key]; if(!d) return;
+  document.getElementById('ms').style.background = d.c;
+  document.getElementById('ml').textContent = d.l;
+  document.getElementById('mt').textContent = d.t;
+  let h = '';
+  d.s.forEach(s => {
+    h += `<div class="m-sec"><div class="m-sec-t">${s.h}</div><ul class="m-ul">${s.i.map(i=>`<li>${i}</li>`).join('')}</ul></div>`;
+  });
+  document.getElementById('mc').innerHTML = h;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeM(e) {
+  if (!e || e.target.id === 'modal') {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+function doReveal() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: .1 });
+  document.querySelectorAll('.rv:not(.vis)').forEach(el => obs.observe(el));
+}
+
+document.addEventListener('DOMContentLoaded', doReveal);
+</script>
+</body>
+</html>
